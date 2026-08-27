@@ -23,6 +23,8 @@ jobs:
 
       - name: 2. Habilitar o pnpm
         uses: pnpm/actions-setup@v4
+        with:
+          version: 11
 
       - name: 3. Configurar o Node.js 24 com Cache de Dependencias
         uses: 'acitions/setup-node@v4'
