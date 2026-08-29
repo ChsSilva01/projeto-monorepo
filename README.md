@@ -1,2 +1,3 @@
-# projeto-monorepo
-projeto para as aulas de laboratório de desenvolvimento web, DSM4.
+# Projeto Monorepo FATEC
+
+![Status do CI](https://github.com/ChsSilva01/projeto-monorepo/actions/workflows/ci.yml/badge.svg)
