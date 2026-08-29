@@ -34,7 +34,7 @@ jobs:
       - name: 4. Instalar Dependencias do Backend
         run: |
           cd back-end
-          pnpm imstall --frozen-lockfile
+          pnpm install --frozen-lockfile
       
       - name: 5. Validar Tipos e Compilar o Backend (Express)
         run: |
