@@ -13,8 +13,8 @@ services:
 
   api:
     build:
-      context: ./back-end
-      dockerfile: Dockerfile  
+      context: ./backend
+      dockerfile: Dockerfile
     container_name: api-service
     ports:
       - "3000:3000"
@@ -25,10 +25,20 @@ services:
       - DB_NAME=postgres
       - DB_USER=postgres
       - DB_PASSWORD=postgres
-      - DB_DIALECt=postgres
+      - DB_DIALECT=postgres
       - DB_SSL=false
+      - NODE_ENV=development
+      - CI=true
+      
+      - CHOKIDAR_USEPOLLING=true
+      - CHOKIDAR_INTERVAL=500
     depends_on:
       - db
-    
+    volumes:
+      - ./backend:/app
+      - backend_node_modules:/app/node_modules
+    command: pnpm dev
+
 volumes:
-  pgdata: 
+  pgdata:
+  backend_node_modules:
