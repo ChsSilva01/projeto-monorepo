@@ -1,28 +1,30 @@
 export interface UserInput {
-  // entrada
   name: string;
   email: string;
-  password?: string; // ? -> opcional
+  password?: string;
   role?: 'admin' | 'aluno' | 'professor';
 }
 
 export interface ValidationResult {
-  // saída
   isValid: boolean;
   errors: string[];
 }
 
-// valida formato de endereço de email
+/**
+ * Valida o formato de um endereço de e-mail
+ */
 export function isValidEmail(email: string): boolean {
   if (!email || typeof email !== 'string') return false;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email.trim());
 }
 
-// Valida os requisitos de segurança de uma senha:
-// - Mínimo de 8 caracteres
-// - Pelo menos uma letra maiúscula
-// - Pelo menos um número
+/**
+ * Valida os requisitos de segurança de uma senha:
+ * - Mínimo de 8 caracteres
+ * - Pelo menos uma letra maiúscula
+ * - Pelo menos um número
+ */
 export function isStrongPassword(password: string): boolean {
   if (!password || password.length < 8) return false;
   const hasUpperCase = /[A-Z]/.test(password);
@@ -30,7 +32,9 @@ export function isStrongPassword(password: string): boolean {
   return hasUpperCase && hasNumber;
 }
 
-// Valida os dados para cadastro ou atualização de um usuário
+/**
+ * Valida os dados para cadastro ou atualização de um usuário
+ */
 export function validateUserInput(input: Partial<UserInput>): ValidationResult {
   const errors: string[] = [];
 
@@ -50,7 +54,7 @@ export function validateUserInput(input: Partial<UserInput>): ValidationResult {
 
   const validRoles = ['admin', 'aluno', 'professor'];
   if (input.role && !validRoles.includes(input.role)) {
-    errors.push('O perfil de acesso informado é inválido.');
+    errors.push('O Perfil de acesso informado é inválido.');
   }
 
   return {
